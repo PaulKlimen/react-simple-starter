@@ -1,6 +1,6 @@
 # React-Simple-Starter
 
-## Project setup
+### Project setup
 ```
 yarn
 ```
