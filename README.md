@@ -1,4 +1,4 @@
-# React-Simple-Starter
+# react-simple-starter
 
 ### Project setup
 ```
