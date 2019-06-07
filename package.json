@@ -1,19 +1,18 @@
 {
-  "name": "lms-frontend",
+  "name": "react-simple-starter",
   "version": "0.1.0",
-  "description": "This project is a client application for CRM",
+  "description": "This is a bootstrap for starting new react projects",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://bitbucket.org/kodixrock/lms-frontend.git"
+    "type": "git"
   },
-  "author": "Kodix LLC",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/kodixrock/lms-frontend#readme",
+  "author": "PaulKlimen",
+  "license": "MIT",
+  "homepage": "https://github.com/PaulKlimen/React-Simple-Starter",
   "devDependencies": {
     "@babel/cli": "7.4.4",
     "@babel/core": "7.4.5",
@@ -21,7 +20,7 @@
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.0.0",
     "babel-loader": "8.0.6",
-    "clean-webpack-plugin": "^2.0.2",
+    "clean-webpack-plugin": "2.0.2",
     "css-loader": "2.1.1",
     "file-loader": "3.0.1",
     "html-webpack-plugin": "3.2.0",
