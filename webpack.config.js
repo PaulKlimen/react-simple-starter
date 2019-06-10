@@ -9,7 +9,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     filename: 'bundle.js'
   },
 
@@ -17,11 +17,16 @@ module.exports = {
 
   resolve: { extensions: ['.js', '.jsx'] },
 
+  devtool: 'inline-source-map',
+
   devServer: {
-    contentBase: path.join(__dirname, 'public/'),
+    contentBase: path.join(__dirname, 'dist'),
     port: 3000,
-    publicPath: 'http://localhost:3000/dist/',
-    hotOnly: true
+    publicPath: 'http://localhost:3000/',
+    historyApiFallback: true,
+    hotOnly: true,
+    open: true,
+    overlay: true,
   },
 
   module: {
@@ -42,7 +47,17 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         loader: 'file-loader',
-      }
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attrs: ['img:src'],
+            minimize: true,
+          }
+        }
+      },
     ]
   },
 
@@ -55,4 +70,5 @@ module.exports = {
     new CleanWebpackPlugin(),
   ]
 };
+
 
