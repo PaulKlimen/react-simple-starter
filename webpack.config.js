@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -13,7 +14,7 @@ module.exports = {
     filename: 'bundle.js',
   },
 
-  mode: 'development',
+  mode: process.env.NODE_ENV,
 
   resolve: { extensions: ['.js', '.jsx'] },
 
@@ -46,7 +47,12 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: 'file-loader',
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'fonts/',
+          },
+        }],
       },
       {
         test: /\.(html)$/,
@@ -64,10 +70,11 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      template: 'public/index.html',
       title: 'React Simple Starter',
-      template: 'public/index.html'
     }),
     new CleanWebpackPlugin(),
+    new Visualizer(),
   ]
 };
 
