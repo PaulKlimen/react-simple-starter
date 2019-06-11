@@ -4,8 +4,8 @@
   "description": "This is a bootstrap for starting new react projects",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,7 +30,8 @@
     "webpack": "4.32.2",
     "webpack-cli": "3.3.2",
     "webpack-dev-server": "3.4.1",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-merge": "4.2.1",
+    "webpack-visualizer-plugin": "0.1.11"
   },
   "dependencies": {
     "@babel/polyfill": "7.4.4",
