@@ -1,11 +1,15 @@
 module.exports = function (api) {
-  api.cache(true); // cache babel config
-
   return {
     presets: [
       [
         "@babel/preset-env",
-        { useBuiltIns: "usage" },
+        {
+          useBuiltIns: 'usage',
+          corejs: {
+            version: 3,
+            proposals: true,
+          }
+        }
       ],
       [
         "@babel/preset-react",
