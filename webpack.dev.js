@@ -18,6 +18,7 @@ module.exports = merge(common, {
         hotOnly: true,
         open: true,
         overlay: true,
+        stats: 'minimal',
     },
 
     plugins: [

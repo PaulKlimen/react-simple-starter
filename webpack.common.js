@@ -9,13 +9,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].[hash].js',
-    chunkFilename: 'chunk.[contenthash].js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[chunkhash].js',
   },
 
   resolve: {
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, "src"),
+    ],
     extensions: ['.js', '.jsx'],
-    symlinks: false,
   },
 
   module: {
