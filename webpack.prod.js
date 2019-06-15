@@ -7,6 +7,7 @@ module.exports = merge(common, {
   stats: {
     chunks: false,
     modules: false,
+    colors: true,
   },
 
   plugins: [

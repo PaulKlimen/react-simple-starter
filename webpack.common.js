@@ -35,6 +35,8 @@ module.exports = {
     },
   },
 
+  profile: true,
+
   module: {
     rules: [
       {

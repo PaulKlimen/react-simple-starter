@@ -23,6 +23,8 @@ module.exports = merge(common, {
       chunks: false,
       // Add built modules information
       modules: false,
+      // `webpack --colors` equivalent
+      colors: true,
     },
   },
 
