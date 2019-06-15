@@ -15,10 +15,24 @@ module.exports = {
 
   resolve: {
     modules: [
-      "node_modules",
-      path.resolve(__dirname, "src"),
+      'node_modules',
+      path.resolve(__dirname, 'src'),
     ],
     extensions: ['.js', '.jsx'],
+    descriptionFiles: ['package.json'],
+  },
+
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
 
   module: {
@@ -44,16 +58,6 @@ module.exports = {
             outputPath: 'fonts/',
           },
         }],
-      },
-      {
-        test: /\.(html)$/,
-        use: {
-          loader: 'html-loader',
-          options: {
-            attrs: ['img:src'],
-            minimize: true,
-          }
-        }
       },
     ]
   },
