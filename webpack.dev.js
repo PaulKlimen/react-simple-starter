@@ -8,7 +8,7 @@ const Visualizer = require('webpack-visualizer-plugin');
 module.exports = merge(common, {
   mode: 'development',
 
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -18,7 +18,12 @@ module.exports = merge(common, {
     hotOnly: true,
     open: true,
     overlay: true,
-    stats: 'minimal',
+    stats: {
+      // Add chunk information (setting this to `false` allows for a less verbose output)
+      chunks: false,
+      // Add built modules information
+      modules: false,
+    },
   },
 
   plugins: [

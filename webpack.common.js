@@ -10,7 +10,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].[hash].js',
-    chunkFilename: '[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
   },
 
   resolve: {
@@ -23,11 +23,11 @@ module.exports = {
   },
 
   optimization: {
-    runtimeChunk: 'single',
+    runtimeChunk: 'single', //extract all webpack runtime logic to a single bundle
     splitChunks: {
       cacheGroups: {
         vendor: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/]/, //extract all node_modules required staff to a separate bundle
           name: 'vendors',
           chunks: 'all',
         },
