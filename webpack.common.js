@@ -1,7 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackManifest = require('webpack-manifest-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -9,8 +12,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].[hash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    filename: '[name].js',
   },
 
   resolve: {
@@ -18,8 +20,13 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, 'src'),
     ],
-    extensions: ['.js', '.jsx'],
-    descriptionFiles: ['package.json'],
+    extensions: ['.js', '.jsx', '.css'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      Assets: path.resolve(__dirname, 'src/assets'),
+      Containers: path.resolve(__dirname, 'src/containers'),
+      Components: path.resolve(__dirname, 'src/components'),
+    },
   },
 
   optimization: {
@@ -35,8 +42,6 @@ module.exports = {
     },
   },
 
-  profile: true,
-
   module: {
     rules: [
       {
@@ -50,13 +55,22 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        loader: 'file-loader',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [{
           loader: 'file-loader',
           options: {
+            name: '[name].[ext]',
             outputPath: 'fonts/',
           },
         }],
@@ -70,6 +84,12 @@ module.exports = {
       title: 'React Simple Starter',
     }),
     new CleanWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      React: 'react',
+      PropTypes: 'prop-types',
+    }),
+    new WebpackManifest(),
+    new Visualizer(),
   ]
 };
 

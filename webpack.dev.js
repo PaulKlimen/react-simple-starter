@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-const Visualizer = require('webpack-visualizer-plugin');
+const WebpackNotifier = require('webpack-notifier');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -19,17 +19,16 @@ module.exports = merge(common, {
     open: true,
     overlay: true,
     stats: {
-      // Add chunk information (setting this to `false` allows for a less verbose output)
       chunks: false,
-      // Add built modules information
       modules: false,
-      // `webpack --colors` equivalent
       colors: true,
     },
   },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new Visualizer(),
+    new WebpackNotifier({
+      title: 'React Simple Starter',
+    }),
   ]
 });
