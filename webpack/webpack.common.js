@@ -1,16 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin/dist/clean-webpack-plugin');
 const WebpackManifest = require('webpack-manifest-plugin');
 const Visualizer = require('webpack-visualizer-plugin');
 
+
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, '../src/index.js'),
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: '[name].js',
   },
@@ -18,14 +18,15 @@ module.exports = {
   resolve: {
     modules: [
       'node_modules',
-      path.resolve(__dirname, 'src'),
+      path.resolve(__dirname, '../src'),
     ],
     extensions: ['.js', '.jsx', '.css'],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      Assets: path.resolve(__dirname, 'src/assets'),
-      Containers: path.resolve(__dirname, 'src/containers'),
-      Components: path.resolve(__dirname, 'src/components'),
+      '@': path.resolve(__dirname, '../src'),
+      assets: path.resolve(__dirname, '../src/assets'),
+      containers: path.resolve(__dirname, '../src/containers'),
+      components: path.resolve(__dirname, '../src/components'),
+      base: path.resolve(__dirname, '../src/components/base'),
     },
   },
 

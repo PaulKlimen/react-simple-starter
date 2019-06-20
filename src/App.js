@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import './App.css';
+import styled from 'styled-components';
 
-class App extends Component {
-  render() {
+const Wrapper = styled.div`
+
+`;
+
+const App = () => {
     return(
-      <div className='App'>
+      <Wrapper>
         <h1> Hello, World! </h1>
-      </div>
+      </Wrapper>
     );
-  }
-}
+};
 
 export default App;
