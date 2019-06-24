@@ -15,6 +15,7 @@ module.exports = function (api) {
         "@babel/preset-react",
         { development: api.env("development") },
       ],
+      "airbnb",
       "@babel/preset-flow"
     ],
 

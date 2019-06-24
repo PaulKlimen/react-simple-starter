@@ -9,8 +9,8 @@ module.exports = merge(common, {
   mode: 'production',
 
   output: {
-    filename: '[name].[contenthash].js',
-    chunkFilename: '[name].[contenthash].js',
+    filename: '[name].[contenthash:8].js',
+    chunkFilename: '[name].[contenthash:8].js',
   },
 
   stats: {

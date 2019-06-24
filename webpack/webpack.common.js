@@ -7,7 +7,7 @@ const Visualizer = require('webpack-visualizer-plugin');
 
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/index.js'),
+  entry: path.resolve(__dirname, '../src/index.jsx'),
 
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -20,13 +20,13 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, '../src'),
     ],
-    extensions: ['.js', '.jsx', '.css'],
+    extensions: ['.js', '.jsx'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
-      assets: path.resolve(__dirname, '../src/assets'),
-      containers: path.resolve(__dirname, '../src/containers'),
-      components: path.resolve(__dirname, '../src/components'),
-      base: path.resolve(__dirname, '../src/components/base'),
+      Assets: path.resolve(__dirname, '../src/assets'),
+      Containers: path.resolve(__dirname, '../src/containers'),
+      Components: path.resolve(__dirname, '../src/components'),
+      BaseComponents: path.resolve(__dirname, '../src/components/base'),
     },
   },
 
@@ -46,8 +46,20 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
         test: /\.(js|jsx)$/,
-        include: path.resolve('src'),
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          failOnError: true,
+          fix: true,
+          formatter: require('eslint/lib/formatters/table'),
+          cache: true,
+        },
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, '../src'),
         use: ['thread-loader', 'cache-loader', 'babel-loader'],
       },
       {
@@ -86,7 +98,6 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new webpack.ProvidePlugin({
-      React: 'react',
       PropTypes: 'prop-types',
     }),
     new WebpackManifest(),
