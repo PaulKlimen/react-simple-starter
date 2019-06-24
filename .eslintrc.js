@@ -1,7 +1,11 @@
 module.exports = {
   extends: [
-    "airbnb",
+    'airbnb',
   ],
+  env: {
+    browser: true,
+    node: true,
+  },
   settings: {
     'import/resolver': {
       alias: {
@@ -13,7 +17,7 @@ module.exports = {
           ['BaseComponents', './src/components/base'],
         ],
         extensions: ['.js', '.jsx'],
-      }
+      },
     }
   },
 };
