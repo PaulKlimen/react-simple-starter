@@ -25,11 +25,7 @@ module.exports = merge(common, {
     minimizer: [new UglifyJsPlugin({
       chunkFilter: (chunk) => {
         // Exclude uglification for the `vendor` chunk
-        if (chunk.name === 'vendor') {
-          return false;
-        }
-
-        return true;
+        return chunk.name !== 'vendor';
       },
       cache: true,
       parallel: true,

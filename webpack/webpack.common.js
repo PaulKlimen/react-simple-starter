@@ -49,13 +49,18 @@ module.exports = {
         enforce: "pre",
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "eslint-loader",
-        options: {
-          failOnError: true,
-          fix: true,
-          formatter: require('eslint/lib/formatters/table'),
-          cache: true,
-        },
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              failOnError: true,
+              fix: true,
+              formatter: require('eslint/lib/formatters/table'),
+              cache: true,
+            },
+          },
+          'stylelint-custom-processor-loader',
+        ],
       },
       {
         test: /\.(js|jsx)$/,
